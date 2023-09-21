@@ -16,7 +16,7 @@ from promptflow._cli._params import (
     add_param_run_name,
     add_param_set,
     add_parser_build,
-    logging_params,
+    logging_params, add_param_max_results, add_param_all_results,
 )
 from promptflow._cli._utils import (
     activate_action,
@@ -208,21 +208,6 @@ pf run list --all-results
 # List all runs status as table:
 pf run list --output table
 """
-    add_param_max_results = lambda parser: parser.add_argument(  # noqa: E731
-        "-r",
-        "--max-results",
-        dest="max_results",
-        type=int,
-        default=MAX_LIST_CLI_RESULTS,
-        help=f"Max number of results to return. Default is {MAX_LIST_CLI_RESULTS}.",
-    )
-    add_param_all_results = lambda parser: parser.add_argument(  # noqa: E731
-        "--all-results",
-        action="store_true",
-        dest="all_results",
-        default=False,
-        help="Returns all results",
-    )
     add_param_archived_only = lambda parser: parser.add_argument(  # noqa: E731
         "--archived-only",
         action="store_true",
